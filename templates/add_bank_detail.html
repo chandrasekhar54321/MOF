@@ -1,0 +1,63 @@
+{% extends 'dashboard.html' %}
+{% block body_block %}
+<div class="breadcrumbs" data-aos="fade-in">
+            <div class="container">
+                <h2>Add Bank Details</h2>
+            </div>
+        </div><br>
+<div class="card">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body">
+    <form action="/add_bank_details/" method="post">
+        {% for msg in messages %}
+        <h2 align="center" style="color: green;">{{msg}}</h2>
+        {% endfor %}
+       {% csrf_token %}
+       <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name As Per Bank:</label>
+            <input type="text" class="form-control" id="product_name" name="name" aria-describedby="emailHelp" required>
+           
+          </div>
+        </div>
+        <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Account Number:</label>
+          <input type="number" class="form-control" id="product_price" name="acc_no" aria-describedby="emailHelp" required>
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+    <label for="exampleInputEmail1">IFCS Code:</label>
+    <input type="text" class="form-control" id="product_quantity" name="ifcs_code" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+      </div>
+      <div class="col-sm-6">
+      <div class="form-group">
+    <label for="exampleInputEmail1">Branch Name:</label>
+    <input type="text" class="form-control" id="product_image" name="branch_name" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+</div>
+</div>
+<div class="form-group">
+    <label for="exampleInputEmail1">Bank Name:</label>
+    <input type="text" class="form-control" id="product_image1" name="bank_name" aria-describedby="emailHelp" accept="image/*" required>
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <div class="container" align="center">
+      <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+  </div>
+    </form>
+  </div> 
+</div>
+</div>
+
+{% endblock %}

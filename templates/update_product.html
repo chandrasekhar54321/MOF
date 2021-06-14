@@ -1,0 +1,101 @@
+{% extends 'dashboard.html' %}
+
+{% block body_block %}
+<div class="breadcrumbs" data-aos="fade-in">
+            <div class="container">
+                <h2>Update Product</h2>
+            </div>
+        </div><br>
+<div class="card">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <form action="/update_product/{{data.id}}" method="post" enctype='multipart/form-data'>
+       {% csrf_token %}
+       <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Name:</label>
+            <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="emailHelp" value="{{data.product_name}}">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+        </div>
+        <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Product Price:</label>
+          <input type="text" class="form-control" id="product_price" name="product_price" aria-describedby="emailHelp" value="{{data.product_price}}">
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+    <label for="exampleInputEmail1">Product Quantity:</label>
+    <input type="text" class="form-control" id="product_quantity" name="product_quantity" aria-describedby="emailHelp" value="{{data.product_quantity}}">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+      </div>
+      <div class="col-sm-6">
+      <div class="form-group">
+    <label for="exampleInputEmail1">Product Image1:</label>
+    <input type="file" class="form-control" id="product_image" name="product_image" aria-describedby="emailHelp" accept="image/*">
+  </div>
+</div>
+</div>
+<div class="row">
+   <div class="col-sm-6">
+    <div class="form-group">
+    <label for="exampleInputEmail1">Product Image2:</label>
+    <input type="file" class="form-control" id="product_image1" name="product_image1" aria-describedby="emailHelp" accept="image/*">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+</div>
+     <div class="col-sm-6">
+      <p>Image 1</p>
+    {% if data.product_image %}
+                  <img src="{{data.product_image.url}}/" height="140" width="180">
+                {% endif %}
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <p>Image 2</p>
+{% if data.product_image %}
+                  <img src="{{data.product_image1.url}}/" height="140" width="180">
+                {% endif %}
+</div>
+<div class="col-sm-6">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Product Image3:</label>
+    <input type="file" class="form-control" id="product_image2" name="product_image2" aria-describedby="emailHelp" accept="image/*">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <p>Image 3</p>
+    {% if data.product_image %}
+                  <img src="{{data.product_image2.url}}/" height="140" width="180">
+                {% endif %}
+  </div>
+</div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Description:</label>
+    <textarea class="form-control" id="product_description" name="product_description" rows="2">{{data.product_description}}</textarea>
+  </div>
+  <br>
+   <div align="center">
+  <button type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Save Data"> Submit</button>
+</div> 
+      </div>
+    </form>
+  </div> 
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>MOF</title>
+
+<style type="text/css">
+   .breadcrumbs {
+  margin-top: 20px;
+  text-align: center;
+  background: #5b9c2c;
+  padding: 30px 0;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    margin-top: 20px;
+  }
+}
+
+.breadcrumbs h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.breadcrumbs p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+</style>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!--slick slider stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- slick slider -->
+
+  <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/pageloader.css' %}">
+</head>
+
+<body>
+<div class="o-page-loader">
+        <div class="o-page-loader--content">
+            <div class="o-page-loader--spinner"></div>
+            <div class="o-page-loader--message">
+                <span>Loading...</span>
+            </div>
+        </div>
+    </div>
+  <div class="hero_area">
+    <!-- header section strats -->
+     <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/">
+            <!-- <span>MOF</span> Farm -->
+            <img src="{% static 'images/logo.png' %}" height="70" width="70">
+          </a>
+          <!-- </a> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              {% if role == "farmer" %}
+              <li class="nav-item">
+                <a class="nav-link" href="/farming_technique_listing">Farming Technique</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/query_list">All Queries</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/all_blog">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/show_wishlist">Show Wishlists</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href=""><i class="fa fa-user-circle text-warning" aria-hidden="true"></i> Welcome {{user.username}}</a>
+              </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% elif role == "wholeseller" %}
+              <li class="nav-item">
+                <a class="nav-link" href="/query_list">All Queries</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/all_blog">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""><i class="fa fa-user-circle text-warning" aria-hidden="true"></i> Welcome {{user.username}}</a>
+              </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+               {% elif role == "admin" %}
+              <li class="nav-item">
+                <a class="nav-link" href="/create_blog">Create Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_show_all_farmer_user">All Farmer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_show_all_wholeseller_user">All Whole Seller</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_show_all_scientist_user">All Scientist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Query Question</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""><i class="fa fa-user-circle text-warning" aria-hidden="true"></i> Welcome {{user.username}}</a>
+              </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% elif role == "scientist" %}
+              <li class="nav-item">
+                <a class="nav-link" href="/product">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/farming_technique">Create Farming Technique</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/farming_technique_listing">Show Farming Technique</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/create_blog">Create Blog</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href=""><i class="fa fa-user-circle text-warning" aria-hidden="true"></i> Welcome {{user.username}}</a>
+              </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/product">Products</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="/all_blog">Blogs</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="/farming_technique_listing">Farming Technique</a>
+              </li>              
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="/registerwithnormaluser">Register as Farmer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/registerwithwholeseller">Register as Whole Seller</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/registerwithwholeseller">Register as Scientist</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li> 
+      <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+              </li>
+              {% endif %}
+
+              <!-- {% if user.is_authenticated %}
+              
+      {% else %}
+      <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+              </li>
+      {% endif %}
+            </ul>
+            <!-- <div class="quote_btn-container">
+              
+              <a href="/registerwithnormaluser">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+            </div> -->
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+<div class="breadcrumbs" data-aos="fade-in">
+            <div class="container">
+                <h2>Blog Details</h2>
+            </div>
+        </div><br>
+<div class="container mt-4">
+   <div class="shadow-lg p-3 mb-5 bg-body rounded">
+     {% if data.blog_image %}
+        <img src="{{data.blog_image.url}}/" height="600" width="500">
+     {% endif %}
+     <h1>Blog Name : {{data.blog_name}}</h1>
+     <h2>Blog Title : {{data.blog_title}}</h2>
+    
+   </div>
+    <h2>Description :</h2>
+{{data.description|safe}}
+</div>
+
+
+<script type="text/javascript" src="{% static 'js/pageloader.js' %}"></script>
+  <!-- jQery -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- slick slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+  <!-- custom js -->
+  <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>

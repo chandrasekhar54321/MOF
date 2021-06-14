@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Farmer Registration</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'registerwithnormaluser/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'registerwithnormaluser/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'registerwithnormaluser/css/main.css' %}" rel="stylesheet" media="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript">
+$(document).ready(function(){
+ $("#pass").keyup(function(){
+  check_pass();
+ });
+});
+
+function check_pass()
+{
+ var val=document.getElementById("pass").value;
+ var meter=document.getElementById("meter");
+ var no=0;
+ if(val!="")
+ {
+  // If the password length is less than or equal to 6
+  if(val.length<=6)no=1;
+
+  // If the password length is greater than 6 and contain any lowercase alphabet or any number or any special character
+  if(val.length>6 && (val.match(/[a-z]/) || val.match(/\d+/) || val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)))no=2;
+
+  // If the password length is greater than 6 and contain alphabet,number,special character respectively
+  if(val.length>6 && ((val.match(/[a-z]/) && val.match(/\d+/)) || (val.match(/\d+/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) || (val.match(/[a-z]/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/))))no=3;
+
+  // If the password length is greater than 6 and must contain alphabets,numbers and special characters
+  if(val.length>6 && val.match(/[a-z]/) && val.match(/\d+/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/))no=4;
+
+  if(no==1)
+  {
+   $("#meter").animate({width:'50px'},300);
+   meter.style.backgroundColor="red";
+   document.getElementById("pass_type").innerHTML="Very Weak";
+  }
+
+  if(no==2)
+  {
+   $("#meter").animate({width:'100px'},300);
+   meter.style.backgroundColor="#F5BCA9";
+   document.getElementById("pass_type").innerHTML="Weak";
+  }
+
+  if(no==3)
+  {
+   $("#meter").animate({width:'150px'},300);
+   meter.style.backgroundColor="#FF8000";
+   document.getElementById("pass_type").innerHTML="Good";
+  }
+
+  if(no==4)
+  {
+   $("#meter").animate({width:'200px'},300);
+   meter.style.backgroundColor="#00FF40";
+   document.getElementById("pass_type").innerHTML="Strong";
+  }
+ }
+
+ else
+ {
+  meter.style.backgroundColor="white";
+  document.getElementById("pass_type").innerHTML="";
+ }
+}
+</script>
+
+<!-- cnf password -->
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $("#cnf_pass").keyup(function(){
+  check_pass();
+ });
+});
+
+function check_pass2()
+{
+ var val=document.getElementById("cnf_pass").value;
+ var meter=document.getElementById("meter");
+ var no=0;
+ if(val!="")
+ {
+  // If the password length is less than or equal to 6
+  if(val.length<=6)no=1;
+
+  // If the password length is greater than 6 and contain any lowercase alphabet or any number or any special character
+  if(val.length>6 && (val.match(/[a-z]/) || val.match(/\d+/) || val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)))no=2;
+
+  // If the password length is greater than 6 and contain alphabet,number,special character respectively
+  if(val.length>6 && ((val.match(/[a-z]/) && val.match(/\d+/)) || (val.match(/\d+/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) || (val.match(/[a-z]/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/))))no=3;
+
+  // If the password length is greater than 6 and must contain alphabets,numbers and special characters
+  if(val.length>6 && val.match(/[a-z]/) && val.match(/\d+/) && val.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/))no=4;
+
+  if(no==1)
+  {
+   $("#meter").animate({width:'50px'},300);
+   meter.style.backgroundColor="red";
+   document.getElementById("pass_type").innerHTML="Very Weak";
+  }
+
+  if(no==2)
+  {
+   $("#meter").animate({width:'100px'},300);
+   meter.style.backgroundColor="#F5BCA9";
+   document.getElementById("pass_type").innerHTML="Weak";
+  }
+
+  if(no==3)
+  {
+   $("#meter").animate({width:'150px'},300);
+   meter.style.backgroundColor="#FF8000";
+   document.getElementById("pass_type").innerHTML="Good";
+  }
+
+  if(no==4)
+  {
+   $("#meter").animate({width:'200px'},300);
+   meter.style.backgroundColor="#00FF40";
+   document.getElementById("pass_type").innerHTML="Strong";
+  }
+ }
+
+ else
+ {
+  meter.style.backgroundColor="white";
+  document.getElementById("pass_type").innerHTML="";
+ }
+}
+</script>
+ 
+
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-100 p-b-80 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" style="color: blue;" align="center">Farmer Register</h2>
+                    <form method="POST" action="/registerwithnormaluser/">
+                        {% for msg in messages %}
+                        <h2 style="color: red;" align="center">{{msg}}</h2>
+                        {% endfor %}
+                        <div class="input-group">
+                                    <label class="label">User Name</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" type="text" name="username" id="username">
+                                        <!-- <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i> -->
+                                        <p id="user-error" style="color: red;"></p>
+                                    </div>
+                                </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" name="f_name">
+                                    <p id=""></p>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" name="l_name">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Birthday</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div> -->
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email" id="email">
+                                    <p id="errmsgbox" style="color: red;"></p>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" name="mobile" id="mobile">
+                                    <p id="mobile-error" style="color: red;"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="pwd" id="pass">
+                                    <div id="meter_wrapper">
+                                    <div id="meter"></div>
+                                    <span id="pass_type" style="color: red;"></span>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Confirm Password</label>
+                                    <input class="input--style-4" type="password" name="cnf_password">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-t-15" align="center">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'registerwithnormaluser/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'registerwithnormaluser/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'registerwithnormaluser/vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'registerwithnormaluser/vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'js/global.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+          $("#email").keyup(function(){
+          var email = $(this).val();
+          // here you can validate email and show alert or show message into your error box.
+          var pattern=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(pattern.test(email)){
+            $("#errmsgbox").html("");
+
+        }else{
+            $("#errmsgbox").html("Please enter valid email address");
+        }
+   });
+});
+        $("#mobile").keyup(function() {
+        var a = $("#mobile").val();
+        var filter = /^[7-9][0-9]{9}$/;
+
+        if (filter.test(a)) {
+            $("#mobile-error").html("");
+        }
+        else {
+            $("#mobile-error").html("Invalid Mobile Number");
+        }
+    });
+        $("#username").keyup(function() {
+        var a = $("#username").val();
+
+        if (a==="") {
+            $("#user-error").html("Invalid Username");
+        }
+        else {
+            $("#user-error").html("");
+        }
+    });
+         
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
