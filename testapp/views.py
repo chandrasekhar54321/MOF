@@ -65,14 +65,14 @@ def registerwithnormaluser(request):
             data=Normal_User(user_id=user_id,mobile=mobile)   
             data.save()
             messages.info(request,"You Register Successfully")
-            name=username
-            htmly = get_template('farmer_email.html') 
-            d = { 'name':name } 
-            subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-            html_content = htmly.render(d) 
-            msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-            msg.attach_alternative(html_content, "text/html") 
-            msg.send()
+            # name=username
+            # htmly = get_template('farmer_email.html') 
+            # d = { 'name':name } 
+            # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+            # html_content = htmly.render(d) 
+            # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+            # msg.attach_alternative(html_content, "text/html") 
+            # msg.send()
             return render(request,"farmer_register.html")
     else:
         return render(request,'farmer_register.html')
@@ -157,14 +157,14 @@ def registerwithwholeseller(request):
             user_id=result.id
             data=Whole_Seller(user_id=user_id,city=city,mobile=mobile,zip_code=zip_code,gst_no=gst_no)   
             data.save()
-            name=username
-            htmly = get_template('wholeseller_email.html') 
-            d = { 'name':name } 
-            subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-            html_content = htmly.render(d) 
-            msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-            msg.attach_alternative(html_content, "text/html") 
-            msg.send()
+            # name=username
+            # htmly = get_template('wholeseller_email.html') 
+            # d = { 'name':name } 
+            # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+            # html_content = htmly.render(d) 
+            # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+            # msg.attach_alternative(html_content, "text/html") 
+            # msg.send()
             messages.info(request,"Data Saved Successfully")
             return redirect("/registerwithwholeseller")
     else:
@@ -225,13 +225,13 @@ def add_product(request):
             email=request.user.email
             data=Products(user_id=user_id,product_name=product_name,product_price=product_price,product_quantity=product_quantity,product_description=product_description,product_image=product_image,product_image1=product_image1,product_image2=product_image2)
             data.save()
-            htmly = get_template('add_product_email.html') 
-            d = { 'name':name } 
-            subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-            html_content = htmly.render(d) 
-            msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-            msg.attach_alternative(html_content, "text/html") 
-            msg.send()
+            # htmly = get_template('add_product_email.html') 
+            # d = { 'name':name } 
+            # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+            # html_content = htmly.render(d) 
+            # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+            # msg.attach_alternative(html_content, "text/html") 
+            # msg.send()
             return redirect('/add_product')
         else:
             return render(request,'product_add.html')
@@ -364,13 +364,13 @@ def write_reviews(request):
         email=request.user.email
         data=Review(user_id=user_id,p_id=p_id,headline=headline,description=description)
         data.save()
-        htmly = get_template('write_reviews_email.html') 
-        d = { 'name':name } 
-        subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-        html_content = htmly.render(d) 
-        msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-        msg.attach_alternative(html_content, "text/html") 
-        msg.send()
+        # htmly = get_template('write_reviews_email.html') 
+        # d = { 'name':name } 
+        # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+        # html_content = htmly.render(d) 
+        # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+        # msg.attach_alternative(html_content, "text/html") 
+        # msg.send()
         dict_data={'success':'Data Save Successfully'}
         return JsonResponse(dict_data)
     else:
@@ -440,13 +440,13 @@ def contact_save(request):
         message=request.POST['message']
         data=Contact(name=name,email=email,subject=subject,message=message)
         data.save()
-        htmly = get_template('contact_email.html') 
-        d = { 'name':name } 
-        subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-        html_content = htmly.render(d) 
-        msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-        msg.attach_alternative(html_content, "text/html") 
-        msg.send()
+        # htmly = get_template('contact_email.html') 
+        # d = { 'name':name } 
+        # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+        # html_content = htmly.render(d) 
+        # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+        # msg.attach_alternative(html_content, "text/html") 
+        # msg.send()
         messages.info(request,"Data Saved Successfully")
         return redirect('/contact')
     else:
@@ -650,14 +650,14 @@ def scientist_register(request):
             data=Scientist_Register(user_id=user_id,mobile=mobile,designation=designation,description=description)   
             data.save()
             messages.info(request,"You Register Successfully")
-            name=username
-            htmly = get_template('scientist_email.html') 
-            d = { 'name':name } 
-            subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-            html_content = htmly.render(d) 
-            msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-            msg.attach_alternative(html_content, "text/html") 
-            msg.send()
+            # name=username
+            # htmly = get_template('scientist_email.html') 
+            # d = { 'name':name } 
+            # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+            # html_content = htmly.render(d) 
+            # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+            # msg.attach_alternative(html_content, "text/html") 
+            # msg.send()
             return render(request,"scientist_register.html")
     else:
         return render(request,'scientist_register.html')
@@ -685,13 +685,13 @@ def farming_technique_save_data(request):
         data=Farming_Technique(user_id=user_id,heading=heading,youtube_link=youtube_link,farming_description=farming_description,farm_image=farm_image)
         data.save()
         # messages.info(request,"You Register Successfully")
-        htmly = get_template('farming_technique_email.html') 
-        d = { 'name':name } 
-        subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
-        html_content = htmly.render(d) 
-        msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
-        msg.attach_alternative(html_content, "text/html") 
-        msg.send()
+        # htmly = get_template('farming_technique_email.html') 
+        # d = { 'name':name } 
+        # subject, from_email, to = 'Team MOF', 'teams.mof@gmail.com', email 
+        # html_content = htmly.render(d) 
+        # msg = EmailMultiAlternatives(subject, html_content, from_email, [to]) 
+        # msg.attach_alternative(html_content, "text/html") 
+        # msg.send()
         messages.info(request,"Data Save Successfully")
         return redirect("/farming_technique")
     else:
